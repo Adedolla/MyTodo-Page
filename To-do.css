@@ -1,0 +1,105 @@
+#to-do {
+    margin: auto;
+    width: 350px;
+    padding: 20px;
+}
+
+#New-task {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 350px;
+    border: none;
+}
+
+#addTask {
+    color: black;
+    background-color: greenyellow;
+    padding: 10px;
+    border: none;
+    width: 370px;
+    transition: 0.5s ease;
+    cursor: pointer;
+    margin: auto;
+}
+
+#addTask:hover {
+    background-color: aqua;
+    color: white;
+}
+
+#Task-list {
+    width: 350px;
+    display: block;
+    justify-content: end;
+    align-items: center;
+    list-style: upper-roman;
+}
+
+.RemoveBtn {
+    background-color: greenyellow;
+    border: none;
+    border-radius: 1rem;
+}
+
+.RemoveBtn:hover {
+    background-color: aqua;
+    color: aliceblue;
+}
+
+button {
+    margin: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+body.light-mode {
+    background-color: brown;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: black;
+    color: white;
+}
+
+.EditBtn {
+    color: black;
+    background-color: greenyellow;
+    border: none;
+    border-radius: 1rem;
+}
+
+.EditBtn:hover {
+    background-color: aqua;
+    color: aliceblue;
+}
+
+li {
+    text-transform: capitalize;
+}
+
+#toggle-mode {
+    background-color: greenyellow;
+    border: none;
+}
+
+#toggle-mode:hover {
+    background-color: aqua;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+}
+
+footer p {
+    margin: 0;
+}
