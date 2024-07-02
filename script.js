@@ -1,23 +1,33 @@
 $(document).ready(function() {
+    // Load tasks on page load
+    loadTasks();
+
     // Function to add a new task
     $('#addTask').click(function() {
         var taskText = $("#New-task").val();
-        if(taskText !== "") {
-            $("#Task-list").append(`
-                <li>
-                    <span class="task-text">${taskText}</span>
-                    <button class="EditBtn">Edit</button>
-                    <button class="RemoveBtn">Remove</button>
-                </li>`);
+        if (taskText !== "") {
+            addTask(taskText);
             $("#New-task").val("");
         } else {
             alert("Please enter a task");
         }
     });
 
+    // Function to add a task to the list and local storage
+    function addTask(taskText) {
+        $("#Task-list").append(`
+            <li>
+                <span class="task-text">${taskText}</span>
+                <button class="EditBtn">Edit</button>
+                <button class="RemoveBtn">Remove</button>
+            </li>`);
+        saveTasks();
+    }
+
     // Function to remove a task
     $(document).on('click', '.RemoveBtn', function() {
         $(this).closest('li').remove();
+        saveTasks();
     });
 
     // Function to edit a task
@@ -27,8 +37,28 @@ $(document).ready(function() {
         var newText = prompt("Edit your task", currentText);
         if (newText !== null && newText !== "") {
             taskTextSpan.text(newText);
+            saveTasks();
         }
     });
+
+    // Save tasks to local storage
+    function saveTasks() {
+        var tasks = [];
+        $('#Task-list li').each(function() {
+            tasks.push($(this).find('.task-text').text());
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    // Load tasks from local storage
+    function loadTasks() {
+        var tasks = JSON.parse(localStorage.getItem('tasks'));
+        if (tasks) {
+            tasks.forEach(function(task) {
+                addTask(task);
+            });
+        }
+    }
 
     // Dark mode toggle
     if (localStorage.getItem('mode') === 'dark') {
